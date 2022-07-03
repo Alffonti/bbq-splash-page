@@ -1,0 +1,201 @@
+/* Following this design https://xd.adobe.com/spec/3bcaad42-bd8a-415e-6274-08b282cfb769-4dfb/grid */
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    color: #5a595a;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* ===========
+   Typography
+   =========== */
+
+h1{
+    color: #fff;
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin: 0;
+    /* 
+    margin: 2em 0; 
+    controlling the space with display: flex (.container.intro)
+    */
+}
+
+/* Adjacent sibling combinator (the parragraph directly after the h1) */
+h1 + p{
+    color: #f18119;
+    font-size: 1.3125rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    /* balancing spaces between h1 */
+    margin: 0; 
+}
+
+h2{
+    font-size: 1.3125rem;
+    margin: 0;
+}
+
+h2 + p{
+    color: #f18119;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+.top-text{
+    color: #f18119;
+    font-size: 0.625rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    order: -1;
+    border-top: 5px solid currentColor;
+    margin: 0;
+    padding-top: 2px;
+    border-image: linear-gradient(90deg, #ffa51d, #ff713b) 1;
+
+}
+
+.fine-print{
+    font-size: 0.625rem;
+    letter-spacing: 1px;
+}
+
+strong{ font-weight: 900; }
+
+/* ===========
+   Intro section
+   =========== */
+
+.intro{
+    /* in the relative url I need to add ../ which is the parent of the current directory  */
+    background-color: #5a595a;
+    background-image: url(../images/ribs.jpg);
+    /* blending image with color using the multiply value */
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+    padding: 0 0.5em 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 50vh;
+}
+
+/* ===========
+   Main-content section
+   =========== */
+
+.main-content{
+    padding: 2em 1em;
+}
+
+ /* ===========
+   Container (for bigger screens)
+   =========== */
+   
+.intro > *,
+.main-content > * {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===========
+   Form
+   =========== */
+
+.email-collector{
+    width: 80%;
+    max-width: 300px;
+}
+
+input,
+.btn{
+    width: 100%;
+    border-radius: 8px;
+}
+
+input{
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: inherit;
+    margin-bottom: .75em;
+    padding: .5em;
+    border: 1px solid #5a595a;
+    transform: scale(1);
+    transition: transform 250ms;
+}
+
+input:focus{
+    transform: scale(1.1);
+}
+
+.btn{
+    display: inline-block;
+    padding: 1.3em 3.9em;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    border: 0;
+    cursor: pointer;
+}
+
+.btn-primary{
+    background: linear-gradient(90deg, #ffa51d, #ff713b);
+    color: #fff;
+    transition: color 250ms;
+    transform: scale(1);
+    transition: transform 250ms;
+}
+
+.btn-primary:hover,
+.btn-primary:focus{
+    transform: scale(1.1);
+}
+
+/* ===========
+   Media queries
+   =========== */
+
+@media (min-width: 500px) {
+    body{
+        font-size: 1.125rem;
+        display: flex;
+    }
+
+    h1{
+        font-size: 3.5rem;
+    }
+
+    h2,
+    h1 + p{
+        font-size: 1.75rem;
+    }
+
+    h2 + p{
+        font-size: 1.125rem;
+    }
+
+    .intro{
+        width: 55%;
+        min-height: 100vh;
+    }
+
+    .main-content{
+        width: 45%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
